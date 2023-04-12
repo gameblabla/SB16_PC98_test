@@ -1,0 +1,3 @@
+SET BLASTER=AD2 I5 D3
+sbc /I /M:255,255 /VOC:255,255
+sbc /V
