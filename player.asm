@@ -199,7 +199,7 @@ IMFPROGS segment byte public 'CODE' use16
 		out		dx,al
 		inc		ax
 		push	ax
-		rept	0x0600						; Small delay before writing data
+		rept	6						; Small delay before writing data
 		in		al,dx
 		endm
 		mov		ax,0
@@ -248,7 +248,7 @@ IMFPROGS segment byte public 'CODE' use16
 		
 		mov		dx,0xC8D2
 		out		dx,al
-		rept	0x0600
+		rept	6
 		in		al,dx
 		endm
 		xchg	al,ah
