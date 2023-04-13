@@ -1,0 +1,22 @@
+CC = wcl
+MODE = c
+
+DEFINES = -0 -ox -bcl=dos -m$(MODE) -s -I. -DTARGET_MSDOS=16 -Isb
+
+CFLAGS += $(DEFINES)
+
+OUTPUT = TEST.EXE
+
+SOURCES =  wmain.c
+
+all: asm ${OUTPUT}
+
+asm:
+	wasm player.asm
+
+${OUTPUT}: ${SOURCES}
+	${CC} ${CFLAGS} -fe=${OUTPUT} ${SOURCES} player.o
+	rm *.o *.err
+	
+clean:
+	rm *.o ${OUTPUT} *.err

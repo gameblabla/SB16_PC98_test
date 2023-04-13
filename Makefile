@@ -3,7 +3,7 @@ CFLAGS = -Wall -I. -Isound -Os -fomit-frame-pointer -fdata-sections -ffunction-s
 CFLAGS += -I./generic -I./graphics -I. -I./graphics/vga -I./input/dos -Isound/music -Ivideo/pc9821 -Ivideo -Isound -Isb -Isbdma
 LDFLAGS = -lc -Wl,--as-needed -Wl,--gc-sections -flto -s 
 
-OUTPUT = GAME.EXE
+OUTPUT = GAME.exe
 
 SOURCES =  ./main.c sbdma.c
 OBJS = ${SOURCES:.c=.o}

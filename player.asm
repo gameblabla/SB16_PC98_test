@@ -193,13 +193,13 @@ IMFPROGS segment byte public 'CODE' use16
 	StopIMF_ proc
 		push	ax
 		mov		imf_playing,0			; Stop playing
-		mov		dx,0C8D2h
+		mov		dx,0xC8D2
 		mov		ax,0b0h
 	offloop:							; Clear OPL2 registers
 		out		dx,al
 		inc		ax
 		push	ax
-		rept	6						; Small delay before writing data
+		rept	0x0600						; Small delay before writing data
 		in		al,dx
 		endm
 		mov		ax,0
@@ -246,9 +246,9 @@ IMFPROGS segment byte public 'CODE' use16
 		push	cx
 		push	dx
 		
-		mov		dx,0C8D2h
+		mov		dx,0xC8D2
 		out		dx,al
-		rept	6
+		rept	0x0600
 		in		al,dx
 		endm
 		xchg	al,ah

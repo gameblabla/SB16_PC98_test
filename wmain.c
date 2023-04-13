@@ -21,23 +21,61 @@
 #include "sound.h"
 
 
+void *loadfile(const char* filename, long* length) {
+
+	// Very simple file loader routine
+	
+	void* buff;
+	long size;
+	FILE* fp;
+	
+	printf("Opening file %s...\n", filename);
+	fp = fopen(filename, "rb");
+	
+	if (!fp) {
+		printf("Cannot load %s!\n", filename);
+		return NULL;
+	}
+	
+	fseek(fp, 0, SEEK_END);
+	size = ftell(fp);
+	fseek(fp, 0, SEEK_SET);
+	
+	printf("Loading %u bytes...\n", size);
+	
+	buff = malloc(size);
+	fread(buff, 1, size, fp);
+
+	fclose(fp);
+	
+	if ( length ) {
+		*length = size;
+	}		
+
+	return buff;    
+}
+
 int main(int argc,char **argv) 
 {
-	printf("IMF player\n");
-	IMF_Init_Music(0);
-	if (IMF_Load_Music("th4.imf") == 0) {
-		printf("Cannot load!\n");
-		return 1;
-	}
-	printf("Loaded IMF\n");
-	IMF_Play_Music();
-	printf("Playing IMF\n");
-	while(1)
-	{
-		
-	}
-	IMF_Close_Music();
+	void* imf;
+	long imflen;
+
 	
+	imf = loadfile("TH4.IMF", &imflen);
+	if (!imf) {
+		printf("Can't load IMF file\n");
+		return 0;
+	}
+
+	InstallPlayer(560);
+	PlayIMF(imf, (int)imflen);
+
+	while (1) 
+	{
+
+	}
+
 	return 0;
 }
+
 

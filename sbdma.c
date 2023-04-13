@@ -43,14 +43,6 @@
 #define SNDSB_BIO_DSP_READ_STATUS                               0xE
 #endif
 
-#define SB_MIXER_ADDRESS	0x0400
-#define SB_MIXER_DATA		0x0500
-#define SB_DSP_RESET		0x0600
-#define SB_DSP_READ_DATA	0x0a00
-#define SB_DSP_WRITE_DATA	0x0c00
-#define SB_DSP_WRITE_STATUS	0x0c00
-#define SB_DSP_DATA_AVAIL	0x0e00
-
 
 #if defined(PC98_MODE)
 #define BASE_ADDR 0x20D2
